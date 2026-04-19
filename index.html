@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KeepSafe Support</title>
+  <meta name="description" content="Support center for KeepSafe, including contact options, account help, billing questions, and emergency guidance." />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08111d;
+      --bg-2: #0f1a2c;
+      --panel: rgba(16, 24, 39, 0.92);
+      --panel-soft: rgba(255,255,255,.03);
+      --panel-border: #24324a;
+      --text: #edf3ff;
+      --muted: #a4b4cf;
+      --accent: #fd8337;
+      --accent-2: #f6c15f;
+      --ok: #41c784;
+      --warn: #f6c15f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(253,131,55,.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(65,199,132,.10), transparent 24%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: .95em;
+    }
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 28px 20px 72px;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+    .brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 20px 44px rgba(0,0,0,.24);
+      backdrop-filter: blur(14px);
+    }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .82rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.3rem);
+      line-height: 1.02;
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 1.35rem;
+      margin-bottom: 14px;
+    }
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .lead, .copy, li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #09101d;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.03);
+      border-color: var(--panel-border);
+      color: var(--text);
+    }
+    .meta {
+      display: grid;
+      gap: 14px;
+    }
+    .meta-item {
+      padding: 16px 18px;
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+    }
+    .meta-label {
+      color: var(--muted);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    .grid-3, .grid-2 {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .full-width { grid-column: 1 / -1; }
+    .list {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--panel-border);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: .92rem;
+      font-weight: 600;
+      margin: 8px 8px 0 0;
+    }
+    .status-ok { color: var(--ok); }
+    .status-warn { color: var(--warn); }
+    .faq {
+      border-top: 1px solid var(--panel-border);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .faq:first-child {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+    .notice {
+      border-left: 3px solid var(--accent);
+      padding-left: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+    .footer {
+      margin-top: 28px;
+      padding: 22px 4px 0;
+      border-top: 1px solid var(--panel-border);
+      color: var(--muted);
+      font-size: .92rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 920px) {
+      .hero, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <a class="brand" href="https://keepsafe.ai" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/KeepSafe-orange.png" alt="KeepSafe logo" />
+        <span>KeepSafe Support</span>
+      </a>
+      <div class="nav-links">
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+        <a href="#safety">Safety</a>
+        <a href="https://keepsafe.ai" target="_blank" rel="noopener noreferrer">Main site</a>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="card">
+        <div class="eyebrow">Support center</div>
+        <h1>Help for accounts, alerts, billing, and setup.</h1>
+        <p class="lead">If something is unclear, not working, or unexpectedly noisy, this is the place to start. We can help with account access, monitored locations, notifications, subscriptions, and general product questions.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:support@keepsafe.ai">Email support</a>
+          <a class="btn btn-secondary" href="#faq">Browse FAQ</a>
+          <a class="btn btn-secondary" href="#safety">Emergency guidance</a>
+        </div>
+      </div>
+
+      <div class="card meta" id="contact">
+        <div class="meta-item">
+          <div class="meta-label">Primary support</div>
+          <div class="meta-value"><a href="mailto:support@keepsafe.ai">support@keepsafe.ai</a></div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Typical help topics</div>
+          <div class="meta-value">Sign-in issues, notification tuning, asset setup, billing, and account questions</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Important note</div>
+          <div class="meta-value">KeepSafe is an alerting and awareness product, not an emergency response service</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-3">
+      <div class="card">
+        <h2>Fastest ways to get help</h2>
+        <p class="copy">For the best response, send the email address on your account, a short description of the issue, and screenshots if the problem is visible in the app.</p>
+        <div class="pill"><span class="status-ok">●</span> Include your account email</div>
+        <div class="pill"><span class="status-ok">●</span> Include affected address or asset</div>
+        <div class="pill"><span class="status-ok">●</span> Include screenshots if available</div>
+      </div>
+      <div class="card">
+        <h2>Common account issues</h2>
+        <ul class="list copy">
+          <li>Password reset or magic-link trouble</li>
+          <li>New device sign-in problems</li>
+          <li>Missing alerts after setup</li>
+          <li>Too many alerts for one property</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Billing and plans</h2>
+        <p class="copy">If you have questions about plan changes, renewals, or invoices, contact support and include the last four digits of the payment method only if requested.</p>
+        <div class="notice">Never send full card numbers over email.</div>
+      </div>
+    </section>
+
+    <section id="faq" class="grid-2">
+      <div class="card full-width">
+        <h2>Frequently asked questions</h2>
+
+        <div class="faq">
+          <h3>I’m not getting alerts. What should I check first?</h3>
+          <p class="copy">Confirm the monitored location is active, notification permissions are enabled on your device, and your email or phone number is correctly listed on the account. If everything looks right and alerts are still missing, email support.</p>
+        </div>
+
+        <div class="faq">
+          <h3>I’m getting too many alerts. Can they be adjusted?</h3>
+          <p class="copy">Yes. Support can help review your monitored locations, radius choices, and notification channels so the signal is useful instead of overwhelming.</p>
+        </div>
+
+        <div class="faq">
+          <h3>Can I update or remove a monitored property?</h3>
+          <p class="copy">Yes. If self-service controls are available in your account, you can make the change there. Otherwise, send support the property or asset details and the requested change.</p>
+        </div>
+
+        <div class="faq">
+          <h3>How do I cancel or change my plan?</h3>
+          <p class="copy">Contact <a href="mailto:support@keepsafe.ai">support@keepsafe.ai</a> from your account email and we’ll help with plan changes, cancellations, or billing questions.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety" class="grid-2">
+      <div class="card">
+        <h2>Emergency guidance</h2>
+        <p class="copy">If there is an immediate threat to life, safety, or property, contact local emergency services first. KeepSafe should not be used as a substitute for emergency dispatch or urgent response.</p>
+        <div class="pill"><span class="status-warn">●</span> Immediate danger: call emergency services</div>
+      </div>
+      <div class="card">
+        <h2>What to include in urgent support emails</h2>
+        <ul class="list copy">
+          <li>Your account email</li>
+          <li>The affected address or asset name</li>
+          <li>When the issue started</li>
+          <li>What you expected to happen</li>
+          <li>Screenshots or copied error text</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>Copyright © 2026 KeepSafe. All rights reserved.</div>
+      <div><a href="https://keepsafe.ai" target="_blank" rel="noopener noreferrer">keepsafe.ai</a></div>
+    </footer>
+  </div>
+</body>
+</html>
