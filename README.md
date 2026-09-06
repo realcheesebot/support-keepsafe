@@ -1,6 +1,6 @@
-# support-keepsafe
+# SCOUT Support
 
-Support site for KeepSafe.
+Support site for Silverpine SCOUT.
 
 ## Live site
 
